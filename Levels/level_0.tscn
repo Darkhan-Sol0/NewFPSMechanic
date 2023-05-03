@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq116neuc2sak"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yff3x"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jkwk6"]
+size = Vector2(20, 20)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_622ns"]
+
+[sub_resource type="Sky" id="Sky_yoxx2"]
+sky_material = SubResource("ProceduralSkyMaterial_622ns")
+
+[sub_resource type="Environment" id="Environment_wecrq"]
+background_mode = 2
+sky = SubResource("Sky_yoxx2")
+
+[node name="Level0" type="Node3D"]
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("WorldBoundaryShape3D_yff3x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+mesh = SubResource("PlaneMesh_jkwk6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wecrq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.739255, 0.673425, 0, -0.673425, 0.739255, 0, 0, 0)
+shadow_enabled = true

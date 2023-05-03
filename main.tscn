@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl4ijs3qc8tbo"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_cspiw"]
+[ext_resource type="PackedScene" uid="uid://dq116neuc2sak" path="res://Levels/level_0.tscn" id="1_ngp8n"]
+[ext_resource type="PackedScene" uid="uid://cic4r3ek35jq3" path="res://Player/player.tscn" id="2_cvo46"]
+[ext_resource type="PackedScene" uid="uid://2dspp4k73ep5" path="res://Interactive/node_3d.tscn" id="4_lr30j"]
+[ext_resource type="PackedScene" uid="uid://b6oe5heengnoc" path="res://Enemys/enemy.tscn" id="5_ammc2"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_cspiw")
+
+[node name="Level0" parent="." instance=ExtResource("1_ngp8n")]
+
+[node name="Player" parent="." instance=ExtResource("2_cvo46")]
+
+[node name="Node3D" parent="." instance=ExtResource("4_lr30j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60255, 0.0742404, 2.51788)
+
+[node name="Enemy" parent="." instance=ExtResource("5_ammc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
