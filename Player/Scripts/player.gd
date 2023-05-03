@@ -52,7 +52,7 @@ func get_input():
 	if Input.is_action_just_pressed("Interactive"):
 		look_interactive.Interactive()
 	
-	if Input.is_action_just_pressed("LBM"):
+	if Input.is_action_pressed("LBM"):
 		Attake_target.Attaked()
 
 func _physics_process(delta):

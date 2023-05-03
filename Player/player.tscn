@@ -37,4 +37,5 @@ HP_max = 100
 [node name="Attake_Component" type="Node" parent="."]
 script = ExtResource("4_o1jkb")
 damage = 50
+shoot_time = 0.5
 large = 10

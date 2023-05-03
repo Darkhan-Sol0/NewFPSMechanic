@@ -6,23 +6,29 @@ class_name Attake_Target_Component
 @onready var Damage_cell = $Damage_Box/MeshInstance3D
 
 var large : int
-
 var damage : int
+var shoot_time : float
+var shooting : bool
 
 func _ready():
 	add_exception(owner)
 	Damage_col.disabled = true
 	Damage_cell.visible = false
+	
+	shooting = true
+	
 
 func Attaked():
 	damage = owner.Attake.damage
 	large = owner.Attake.large
+	shoot_time = owner.Attake.shoot_time
 	
-	Damage_col.disabled = false
-	Damage_cell.visible = true
-	await get_tree().create_timer(0.1).timeout
-	Damage_col.disabled = true
-	Damage_cell.visible = false
+	if shooting:
+		$AnimationPlayer.play("hit")
+		shooting = false
+		await get_tree().create_timer(shoot_time).timeout
+		shooting = true
+
 
 func _process(delta):
 	target_position = Vector3(0, 0, -large)
