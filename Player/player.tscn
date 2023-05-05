@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpg6ohe4pj0ag"]
+[gd_scene load_steps=9 format=3 uid="uid://dpg6ohe4pj0ag"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_56c72"]
 [ext_resource type="Script" path="res://Scripts_Components/Health_Component.gd" id="1_wr8uu"]
+[ext_resource type="Script" path="res://Scripts_Components/Attack_Component.gd" id="2_3ri77"]
 [ext_resource type="Script" path="res://Scripts_Components/HitBox_Component.gd" id="3_4bpj3"]
+[ext_resource type="Script" path="res://Scripts_Components/Weapon_Component.gd" id="5_j0gjc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ik0du"]
 
@@ -10,9 +12,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ggrc8"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_component")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_component", "attack_component")]
 script = ExtResource("1_56c72")
 health_component = NodePath("Health_Component")
+attack_component = NodePath("Attack_Component")
 
 [node name="Health_Component" type="Node" parent="."]
 script = ExtResource("1_wr8uu")
@@ -29,6 +32,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
+[node name="Marker3D" type="Marker3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.62988)
+
 [node name="HitBox_Component" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 2
 collision_mask = 0
@@ -37,3 +43,15 @@ health_component = NodePath("../Health_Component")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox_Component"]
 shape = SubResource("CapsuleShape3D_ggrc8")
+
+[node name="Attack_Component" type="Node" parent="." node_paths=PackedStringArray("weapon_component", "startbull")]
+script = ExtResource("2_3ri77")
+weapon_component = NodePath("../Weapon_Component")
+startbull = NodePath("../Head/Marker3D")
+
+[node name="Weapon_Component" type="Node" parent="."]
+script = ExtResource("5_j0gjc")
+damage = 50
+MAX_BULLET = 10
+speed_shot = 0.5
+TypeShot = 1

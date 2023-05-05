@@ -1,9 +1,12 @@
 extends Node
 class_name Bullet_Component
 
-var attack_component : Attack_Component
+@export var attack_component : Attack_Component
 
-var damage
+var damage : int
 
 func _ready():
-	damage = attack_component.damage
+	if attack_component:
+		damage = attack_component.damage
+	else:
+		damage = 10

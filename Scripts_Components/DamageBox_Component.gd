@@ -1,7 +1,7 @@
 extends Area3D
 class_name DamegeBox_Component
 
-@export var bullet_component : Node3D
+@export var bullet_component : Node
 
 var damage
 
@@ -15,7 +15,4 @@ func _on_area_entered(hitbox : HitBox_Component):
 		return
 	if hitbox.has_method("damage"):
 		hitbox.damage(self)
-	
-	if owner.get_groups().has("Bullet"):
-		print("FUCK!")
-		owner.queue_free()
+
