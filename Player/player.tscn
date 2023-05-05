@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpg6ohe4pj0ag"]
+[gd_scene load_steps=10 format=3 uid="uid://dpg6ohe4pj0ag"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_56c72"]
 [ext_resource type="Script" path="res://Scripts_Components/Health_Component.gd" id="1_wr8uu"]
 [ext_resource type="Script" path="res://Scripts_Components/Attack_Component.gd" id="2_3ri77"]
 [ext_resource type="Script" path="res://Scripts_Components/HitBox_Component.gd" id="3_4bpj3"]
+[ext_resource type="PackedScene" uid="uid://cuq668ik8lfuj" path="res://Player/player_camera.tscn" id="3_g4das"]
 [ext_resource type="Script" path="res://Scripts_Components/Weapon_Component.gd" id="5_j0gjc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ik0du"]
@@ -30,7 +31,7 @@ shape = SubResource("CapsuleShape3D_b5vgf")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="PlayerCamera" parent="Head" instance=ExtResource("3_g4das")]
 
 [node name="Marker3D" type="Marker3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.62988)

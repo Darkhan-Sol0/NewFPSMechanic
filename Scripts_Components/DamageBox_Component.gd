@@ -16,3 +16,5 @@ func _on_area_entered(hitbox : HitBox_Component):
 	if hitbox.has_method("damage"):
 		hitbox.damage(self)
 
+	if owner.name == "Bullet":
+		owner.queue_free()

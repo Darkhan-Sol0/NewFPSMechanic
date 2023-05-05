@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6sn1pw72mrqv"]
+[gd_scene load_steps=6 format=3 uid="uid://b6sn1pw72mrqv"]
 
 [ext_resource type="PackedScene" uid="uid://dpknvi0q5kab3" path="res://Levels/level_0.tscn" id="1_n513v"]
 [ext_resource type="PackedScene" uid="uid://dpg6ohe4pj0ag" path="res://Player/player.tscn" id="2_6mg66"]
 [ext_resource type="PackedScene" uid="uid://be53p7f4f8vda" path="res://Enemys/damage_zone.tscn" id="3_8dwxh"]
+[ext_resource type="PackedScene" uid="uid://i6n5r88xjkqb" path="res://Enemys/enemy.tscn" id="4_2y36c"]
 
 [sub_resource type="GDScript" id="GDScript_tftxy"]
 script/source = "extends Node
@@ -23,3 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="DamageZone" parent="." instance=ExtResource("3_8dwxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94621, 0.818111, -6.29038)
+
+[node name="Enemy" parent="." instance=ExtResource("4_2y36c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 6)
