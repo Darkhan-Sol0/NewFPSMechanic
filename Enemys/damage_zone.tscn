@@ -11,8 +11,9 @@ material = SubResource("StandardMaterial3D_pcona")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fnoj5"]
 
-[node name="DamageZone" type="Node3D"]
+[node name="DamageZone" type="Node3D" node_paths=PackedStringArray("damage_zone")]
 script = ExtResource("1_juigx")
+damage_zone = NodePath("DamegeBox_Component")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rn2cs")
