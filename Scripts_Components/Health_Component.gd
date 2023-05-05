@@ -1,16 +1,14 @@
 extends Node
 class_name Health_Component
 
-@export var HP_max : int
-var HP
+@export var MAX_HEALTH : int
+var health : int
 
 func _ready():
-	HP = HP_max
+	health = MAX_HEALTH
 
-func die():
-	if HP<= 0:
-		owner.queue_free()
-		print(owner.name, " is die!")
-
-func _process(delta):
-	die()
+func damage(damage : DamegeBox_Component):
+	health -= damage.damage
+	print(health)
+	if health <= 0:
+		get_parent().queue_free()

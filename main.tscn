@@ -1,20 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl4ijs3qc8tbo"]
+[gd_scene load_steps=5 format=3 uid="uid://b6sn1pw72mrqv"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_cspiw"]
-[ext_resource type="PackedScene" uid="uid://dq116neuc2sak" path="res://Levels/level_0.tscn" id="1_ngp8n"]
-[ext_resource type="PackedScene" uid="uid://cic4r3ek35jq3" path="res://Player/player.tscn" id="2_cvo46"]
-[ext_resource type="PackedScene" uid="uid://2dspp4k73ep5" path="res://Interactive/node_3d.tscn" id="4_lr30j"]
-[ext_resource type="PackedScene" uid="uid://b6oe5heengnoc" path="res://Enemys/enemy.tscn" id="5_ammc2"]
+[ext_resource type="PackedScene" uid="uid://dpknvi0q5kab3" path="res://Levels/level_0.tscn" id="1_n513v"]
+[ext_resource type="PackedScene" uid="uid://dpg6ohe4pj0ag" path="res://Player/player.tscn" id="2_6mg66"]
+[ext_resource type="PackedScene" uid="uid://be53p7f4f8vda" path="res://Enemys/damage_zone.tscn" id="3_8dwxh"]
+
+[sub_resource type="GDScript" id="GDScript_tftxy"]
+script/source = "extends Node
+
+
+func _input(event):
+	if Input.is_action_just_pressed(\"esc\"):
+		get_tree().quit()
+"
 
 [node name="Main" type="Node"]
-script = ExtResource("1_cspiw")
+script = SubResource("GDScript_tftxy")
 
-[node name="Level0" parent="." instance=ExtResource("1_ngp8n")]
+[node name="Level0" parent="." instance=ExtResource("1_n513v")]
 
-[node name="Player" parent="." instance=ExtResource("2_cvo46")]
+[node name="Player" parent="." instance=ExtResource("2_6mg66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Node3D" parent="." instance=ExtResource("4_lr30j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60255, 0.0742404, 2.51788)
-
-[node name="Enemy" parent="." instance=ExtResource("5_ammc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
+[node name="DamageZone" parent="." instance=ExtResource("3_8dwxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94621, 0.818111, -6.29038)

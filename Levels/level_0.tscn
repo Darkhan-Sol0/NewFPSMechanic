@@ -1,32 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq116neuc2sak"]
+[gd_scene load_steps=6 format=3 uid="uid://dpknvi0q5kab3"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yff3x"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xs87t"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_jkwk6"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_16ylv"]
 size = Vector2(20, 20)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_622ns"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wi6gt"]
 
-[sub_resource type="Sky" id="Sky_yoxx2"]
-sky_material = SubResource("ProceduralSkyMaterial_622ns")
+[sub_resource type="Sky" id="Sky_6wieu"]
+sky_material = SubResource("ProceduralSkyMaterial_wi6gt")
 
-[sub_resource type="Environment" id="Environment_wecrq"]
+[sub_resource type="Environment" id="Environment_a1xae"]
 background_mode = 2
-sky = SubResource("Sky_yoxx2")
+sky = SubResource("Sky_6wieu")
 
 [node name="Level0" type="Node3D"]
 
-[node name="ground" type="StaticBody3D" parent="."]
+[node name="Ground" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
-shape = SubResource("WorldBoundaryShape3D_yff3x")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_xs87t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
-mesh = SubResource("PlaneMesh_jkwk6")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_16ylv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wecrq")
+environment = SubResource("Environment_a1xae")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.739255, 0.673425, 0, -0.673425, 0.739255, 0, 0, 0)
-shadow_enabled = true
+transform = Transform3D(1, 0, 0, 0, 0.519251, 0.854622, 0, -0.854622, 0.519251, 0, 0, 0)
