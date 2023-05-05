@@ -36,7 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 attack_component = NodePath("../../Attack_Component")
 
 [node name="Marker3D" type="Marker3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39792, 0)
 
 [node name="HitBox_Component" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 2
@@ -54,9 +53,8 @@ startbull = NodePath("../Head/Marker3D")
 
 [node name="Weapon_Component" type="Node" parent="."]
 script = ExtResource("5_j0gjc")
-damage = 5
+damage = 3
 MAX_BULLET = 30
-speed_shot = 0.3
+speed_shot = 0.1
 large_fly = 100.0
-razbros = 0.02
-TypeShot = 1
+razbros = 0.01

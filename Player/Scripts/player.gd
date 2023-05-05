@@ -35,8 +35,7 @@ func movement() -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 func get_input(delta):
-	if Input.is_action_pressed("LBM"):
-		attack_component.attack(delta)
+	attack_component.attack(delta)
 	
 	if Input.is_action_just_pressed("Reload_button") and attack_component.bullet < weapon_component.MAX_BULLET:
 		attack_component.bullet = 0

@@ -15,6 +15,7 @@ var bullet : int
 var speed_shot : float
 
 var TypeShot
+var TypeBullet
 
 var Bullet = preload("res://Player/bullet.tscn")
 
@@ -27,28 +28,42 @@ func _ready():
 		bullet = weapon_component.MAX_BULLET
 		speed_shot = weapon_component.speed_shot
 		TypeShot = weapon_component.TypeShot
+		TypeBullet = weapon_component.TypeBullet
 
-func attack(delta):
-	match fire_status:
-		Fire_status.can_fire:
-			if bullet > 0 and fired:
-				print("hit")
-				shot(delta)
-				fired = false
-				await get_tree().create_timer(speed_shot).timeout
-				fired = true
-			elif bullet <= 0:
-				print("reload")
-				reloaded = true
-				change_status(Fire_status.reload)
-		Fire_status.reload:
-			if reloaded:
-				print("HUI")
-				reload()
-
+func AttakeType(delta):
+	if TypeBullet == weapon_component.TYPE_BULLET.SINGLE:
+		match fire_status:
+			Fire_status.can_fire:
+				if bullet > 0 and fired:
+					bullet -= 1
+					shot(delta)
+					fired = false
+					await get_tree().create_timer(speed_shot).timeout
+					fired = true
+				elif bullet <= 0:
+					reloaded = true
+					change_status(Fire_status.reload)
+			Fire_status.reload:
+				if reloaded:
+					reload()
+	if TypeBullet == weapon_component.TYPE_BULLET.DROP:
+		match fire_status:
+			Fire_status.can_fire:
+				if bullet > 0 and fired:
+					bullet -= 1
+					for i in 10:
+						shot(delta)
+					fired = false
+					await get_tree().create_timer(speed_shot).timeout
+					fired = true
+				elif bullet <= 0:
+					reloaded = true
+					change_status(Fire_status.reload)
+			Fire_status.reload:
+				if reloaded:
+					reload()
 
 func shot(delta): 
-	bullet -= 1
 	var bullet_ins = Bullet.instantiate()
 	var randomx = randf_range(-weapon_component.razbros, weapon_component.razbros)
 	var randomy = randf_range(-weapon_component.razbros, weapon_component.razbros)
@@ -58,9 +73,16 @@ func shot(delta):
 	GlobalScript.add_child(bullet_ins)
 
 func reload():
-	print("abc")
 	reloaded = false
 	await get_tree().create_timer(1).timeout
 	bullet = weapon_component.MAX_BULLET
 	fired = true
 	change_status(Fire_status.can_fire)
+
+func attack(delta):
+	if TypeShot == weapon_component.TYPE_SHOT.AUTOSHOT:
+		if Input.is_action_pressed("LBM"):
+			AttakeType(delta)
+	if TypeShot == weapon_component.TYPE_SHOT.SINGLESHOT:
+		if Input.is_action_just_pressed("LBM"):
+			AttakeType(delta)

@@ -10,3 +10,7 @@ class_name Weapon_Component
 enum TYPE_SHOT { AUTOSHOT, SINGLESHOT }
 
 @export var TypeShot : TYPE_SHOT
+
+enum TYPE_BULLET { SINGLE, DROP }
+
+@export var TypeBullet : TYPE_BULLET
