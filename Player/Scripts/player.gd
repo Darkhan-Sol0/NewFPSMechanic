@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var health_component : Health_Component
 @export var attack_component : Attack_Component
 @export var weapon_component : Weapon_Component
+@export var intractive_connecting_player : Intractive_Connecting_Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -39,6 +40,8 @@ func get_input(delta):
 	
 	if Input.is_action_just_pressed("Reload_button") and attack_component.bullet < weapon_component.MAX_BULLET:
 		attack_component.bullet = 0
+	if Input.is_action_just_pressed("Interactive"):
+		intractive_connecting_player.Interactivy()
 
 func _physics_process(delta):
 	gravity_func(delta)

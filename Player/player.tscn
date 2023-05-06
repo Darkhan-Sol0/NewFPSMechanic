@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpg6ohe4pj0ag"]
+[gd_scene load_steps=11 format=3 uid="uid://dpg6ohe4pj0ag"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_56c72"]
 [ext_resource type="Script" path="res://Scripts_Components/Health_Component.gd" id="1_wr8uu"]
 [ext_resource type="Script" path="res://Scripts_Components/Attack_Component.gd" id="2_3ri77"]
 [ext_resource type="Script" path="res://Scripts_Components/HitBox_Component.gd" id="3_4bpj3"]
 [ext_resource type="PackedScene" uid="uid://cuq668ik8lfuj" path="res://Player/player_camera.tscn" id="3_g4das"]
+[ext_resource type="PackedScene" uid="uid://cwsghiebskito" path="res://Player/intractive_connecting_player.tscn" id="3_sn80y"]
 [ext_resource type="Script" path="res://Scripts_Components/Weapon_Component.gd" id="5_j0gjc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ik0du"]
@@ -13,15 +14,12 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ggrc8"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_component", "attack_component", "weapon_component")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_component", "attack_component", "weapon_component", "intractive_connecting_player")]
 script = ExtResource("1_56c72")
 health_component = NodePath("Health_Component")
 attack_component = NodePath("Attack_Component")
 weapon_component = NodePath("Weapon_Component")
-
-[node name="Health_Component" type="Node" parent="."]
-script = ExtResource("1_wr8uu")
-MAX_HEALTH = 100
+intractive_connecting_player = NodePath("Head/Intractive_Connecting_Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ik0du")
@@ -36,6 +34,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 attack_component = NodePath("../../Attack_Component")
 
 [node name="Marker3D" type="Marker3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Intractive_Connecting_Player" parent="Head" instance=ExtResource("3_sn80y")]
 
 [node name="HitBox_Component" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 2
@@ -54,7 +55,13 @@ startbull = NodePath("../Head/Marker3D")
 [node name="Weapon_Component" type="Node" parent="."]
 script = ExtResource("5_j0gjc")
 damage = 3
-MAX_BULLET = 30
+MAX_BULLET = 100
 speed_shot = 0.1
 large_fly = 100.0
-razbros = 0.01
+razbros = 0.03
+TypeShot = 1
+TypeBullet = 1
+
+[node name="Health_Component" type="Node" parent="."]
+script = ExtResource("1_wr8uu")
+MAX_HEALTH = 100

@@ -65,11 +65,11 @@ func AttakeType(delta):
 
 func shot(delta): 
 	var bullet_ins = Bullet.instantiate()
-	var randomx = randf_range(-weapon_component.razbros, weapon_component.razbros)
-	var randomy = randf_range(-weapon_component.razbros, weapon_component.razbros)
+	var randomx = randf_range( -weapon_component.razbros, weapon_component.razbros)
+	var randomy = randf_range( -weapon_component.razbros, weapon_component.razbros)
 	bullet_ins.bullet_component.attack_component = self
 	bullet_ins.global_transform = startbull.global_transform
-	bullet_ins.velocity = bullet_ins.transform.basis * Vector3(randomx,randomy, -weapon_component.large_fly * delta)
+	bullet_ins.velocity = bullet_ins.transform.basis * Vector3(randomx, randomy, -weapon_component.large_fly * delta)
 	GlobalScript.add_child(bullet_ins)
 
 func reload():
