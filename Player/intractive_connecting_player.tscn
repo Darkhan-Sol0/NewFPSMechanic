@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwsghiebskito"]
+
+[ext_resource type="Script" path="res://Player/Scripts/intractive_connecting_player.gd" id="1_54pik"]
+
+[node name="Intractive_Connecting_Player" type="Node3D"]
+script = ExtResource("1_54pik")
+
+[node name="Target_Look" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)
+collision_mask = 2

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuq668ik8lfuj"]
+
+[ext_resource type="Texture2D" uid="uid://br3tl4c6c1n36" path="res://icon.svg" id="1_lvc1d"]
+[ext_resource type="Script" path="res://Player/player_camera.gd" id="1_mhfrc"]
+
+[node name="PlayerCamera" type="Camera3D"]
+script = ExtResource("1_mhfrc")
+
+[node name="HUD" type="Camera2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="HUD"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_lvc1d")
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 316.0
+offset_top = -217.0
+offset_right = 356.0
+offset_bottom = -194.0
+text = "ammo"
