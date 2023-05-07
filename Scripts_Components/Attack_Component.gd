@@ -44,7 +44,12 @@ func shot(delta):
 	var randomy = randf_range( -weapon_component.razbros, weapon_component.razbros)
 	bullet_ins.bullet_component.weapon_component = weapon_component
 	bullet_ins.global_transform = startbull.global_transform
-	bullet_ins.velocity = bullet_ins.transform.basis * Vector3(randomx, randomy, -weapon_component.large_fly * delta)
+	#bullet_ins.velocity = bullet_ins.transform.basis * Vector3(randomx, randomy, -weapon_component.large_fly * delta)
+	
+	var head_rot = $"../Head".rotation.x
+	
+	bullet_ins.apply_central_impulse(Vector3(0,0,-50).rotated(Vector3.RIGHT, startbull.global_rotation.x + randomx).rotated(Vector3.UP, startbull.global_rotation.y + randomy))
+	
 	GlobalScript.add_child(bullet_ins)
 
 func reload():

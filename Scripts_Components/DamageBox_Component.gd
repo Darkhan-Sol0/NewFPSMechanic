@@ -9,12 +9,12 @@ func _ready():
 	area_entered.connect(self._on_area_entered)
 
 func _on_area_entered(hitbox : HitBox_Component):
-	damage = bullet_component.damage
+	#damage = bullet_compondent.damage
 	
 	if hitbox == null:
 		return
 	if hitbox.has_method("damage"):
 		hitbox.damage(self)
 
-	if owner.name == "Bullet":
+	if owner.get_groups().has("Bullet"):
 		owner.queue_free()

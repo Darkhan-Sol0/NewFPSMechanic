@@ -11,6 +11,9 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	$Head/RayCast3D.add_exception(self)
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		var dx = -event.relative.x * 0.0025
@@ -46,9 +49,16 @@ func get_input(delta):
 	if Input.is_action_just_pressed("Interactive"):
 		intractive_connecting_player.Interactivy()
 
+func test_focus_cell():
+	if $Head/RayCast3D.is_colliding():
+		$Head/Marker3D.look_at($Head/RayCast3D.get_collision_point())
+	else:
+		$Head/Marker3D.rotation = Vector3.ZERO
+
 func _physics_process(delta):
 	gravity_func(delta)
 	movement()
 	get_input(delta)
+	test_focus_cell()
 
 	move_and_slide()
