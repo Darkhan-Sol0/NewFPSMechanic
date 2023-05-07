@@ -1,7 +1,7 @@
 extends Area3D
 class_name DamegeBox_Component
 
-@export var bullet_component : Node
+@export var bullet_component : Bullet_Component
 
 var damage
 

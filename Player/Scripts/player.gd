@@ -38,8 +38,11 @@ func movement() -> void:
 func get_input(delta):
 	attack_component.attack(delta)
 	
-	if Input.is_action_just_pressed("Reload_button") and attack_component.bullet < weapon_component.MAX_BULLET:
-		attack_component.bullet = 0
+	intractive_connecting_player.Hover()
+	
+	if Input.is_action_just_pressed("Reload_button") and weapon_component.bullet < weapon_component.MAX_BULLET:
+		attack_component.reload()
+		
 	if Input.is_action_just_pressed("Interactive"):
 		intractive_connecting_player.Interactivy()
 

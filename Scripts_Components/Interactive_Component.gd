@@ -12,3 +12,6 @@ func Interactive():
 		interactive_object.Interactive()
 	else:
 		print('ne hui!')
+
+func Hover():
+	pass

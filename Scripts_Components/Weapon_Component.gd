@@ -5,12 +5,15 @@ class_name Weapon_Component
 @export var MAX_BULLET : int
 @export var speed_shot : float
 @export var large_fly : float
-@export var razbros : float = 0
+@export var razbros : float
+
+var bullet : int
+
+@export var bullet_drop : int
 
 enum TYPE_SHOT { AUTOSHOT, SINGLESHOT }
 
 @export var TypeShot : TYPE_SHOT
 
-enum TYPE_BULLET { SINGLE, DROP }
-
-@export var TypeBullet : TYPE_BULLET
+func _ready():
+	bullet = MAX_BULLET
