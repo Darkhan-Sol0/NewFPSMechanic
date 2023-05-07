@@ -9,7 +9,7 @@ class_name Weapon_Component
 
 var bullet : int
 
-@export var bullet_drop : int
+@export var bullet_drop : int = 1
 
 enum TYPE_SHOT { AUTOSHOT, SINGLESHOT }
 

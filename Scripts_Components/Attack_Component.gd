@@ -21,7 +21,7 @@ func change_status( new_status : Fire_status):
 func _ready():
 	pass
 
-func AttakeType(delta):
+func Attake_func(delta):
 		match fire_status:
 			Fire_status.can_fire:
 				if weapon_component.bullet > 0 and fired:
@@ -31,9 +31,10 @@ func AttakeType(delta):
 					fired = false
 					await get_tree().create_timer(weapon_component.speed_shot).timeout
 					fired = true
-				elif weapon_component.bullet <= 0:
-					reloaded = true
-					change_status(Fire_status.reload)
+					if weapon_component.bullet <= 0:
+						reloaded = true
+						change_status(Fire_status.reload)
+						reload()
 			Fire_status.reload:
 				if reloaded:
 					reload()
@@ -44,11 +45,7 @@ func shot(delta):
 	var randomy = randf_range( -weapon_component.razbros, weapon_component.razbros)
 	bullet_ins.bullet_component.weapon_component = weapon_component
 	bullet_ins.global_transform = startbull.global_transform
-	#bullet_ins.velocity = bullet_ins.transform.basis * Vector3(randomx, randomy, -weapon_component.large_fly * delta)
-	
-	var head_rot = $"../Head".rotation.x
-	
-	bullet_ins.apply_central_impulse(Vector3(0,0,-50).rotated(Vector3.RIGHT, startbull.global_rotation.x + randomx).rotated(Vector3.UP, startbull.global_rotation.y + randomy))
+	bullet_ins.apply_central_impulse(Vector3(0,0,-weapon_component.large_fly).rotated(Vector3.RIGHT, startbull.global_rotation.x + randomx).rotated(Vector3.UP, startbull.global_rotation.y + randomy))
 	
 	GlobalScript.add_child(bullet_ins)
 
@@ -63,7 +60,7 @@ func attack(delta):
 	match weapon_component.TypeShot:
 		weapon_component.TYPE_SHOT.AUTOSHOT:
 			if Input.is_action_pressed("LBM"):
-				AttakeType(delta)
+				Attake_func(delta)
 		weapon_component.TYPE_SHOT.SINGLESHOT:
 			if Input.is_action_just_pressed("LBM"):
-				AttakeType(delta)
+				Attake_func(delta)

@@ -40,9 +40,8 @@ _data = {
 "flip": SubResource("Animation_vmqgq")
 }
 
-[node name="DamageZone" type="Node3D" node_paths=PackedStringArray("damage_zone")]
+[node name="DamageZone" type="Node3D"]
 script = ExtResource("1_juigx")
-damage_zone = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rn2cs")
