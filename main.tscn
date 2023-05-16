@@ -12,5 +12,5 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08873, 0, -7.8778)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_0ss43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46431, 0, -2.27691)
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 6.46431, 0, -2.27691)
 player = NodePath("../Player")

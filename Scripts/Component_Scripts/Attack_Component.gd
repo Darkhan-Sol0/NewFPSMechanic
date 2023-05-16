@@ -36,7 +36,6 @@ func fire():
 
 func reload():
 	if reloaded and ammo < max_ammo:
-		print("hui")
 		ammo = 0
 		reloaded = false
 		await get_tree().create_timer(reload_time).timeout

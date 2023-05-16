@@ -13,7 +13,12 @@ func take_damage(damage):
 		print('die')
 		queue_free()
 
+func see_func(delta):
+	$Head.rotation.y += delta
+
 func _physics_process(delta):
+	
+	see_func(delta)
 	
 	AI.pattern()
 	

@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://lrbgtqdi2re"]
+[gd_scene load_steps=8 format=3 uid="uid://lrbgtqdi2re"]
 
 [ext_resource type="Script" path="res://Scripts/Object_Scripts/player.gd" id="1_dlkvt"]
+[ext_resource type="Script" path="res://Scripts/Object_Scripts/UI.gd" id="2_6n86y"]
 [ext_resource type="Script" path="res://Scripts/Component_Scripts/Attack_Component.gd" id="2_24xkf"]
+[ext_resource type="Texture2D" uid="uid://dc3ht1segt73k" path="res://icon.svg" id="3_6gq7j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fls7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xddr7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oj0tg"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("attack_component")]
 script = ExtResource("1_dlkvt")
@@ -24,13 +31,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
+[node name="UI" type="CanvasLayer" parent="Head/Camera3D"]
+
+[node name="Control" type="Control" parent="Head/Camera3D/UI" node_paths=PackedStringArray("attack_component")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_6n86y")
+attack_component = NodePath("../../../../Attack_Component")
+
+[node name="Ammo" type="Label" parent="Head/Camera3D/UI/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -68.0
+offset_right = -26.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ammo
+"
+label_settings = SubResource("LabelSettings_oj0tg")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera3D/UI/Control"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6gq7j")
+expand_mode = 1
+
 [node name="StartBullet" type="Marker3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128428, -0.105351, -0.618608)
+transform = Transform3D(0.999848, 0.00060908, 0.0174418, 0, 0.999391, -0.0348995, -0.0174524, 0.0348942, 0.999239, 0.2, -0.2, -1)
 
 [node name="Attack_Component" type="Node3D" parent="." node_paths=PackedStringArray("startbullet")]
 script = ExtResource("2_24xkf")
 startbullet = NodePath("../Head/StartBullet")
+max_ammo = 30
 damage = 10
-razbros = 0.01
+shot_coldown = 0.05
 type_fire = 1
 otdacha = 0.01

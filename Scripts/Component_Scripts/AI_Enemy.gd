@@ -21,9 +21,9 @@ func pattern():
 			print('i see you')
 
 func look_at_player():
-	Look.look_at(owner.player.global_position)
 	
 	if owner.global_position.distance_to(owner.player.global_position) <= 10  and t.get_collider() == owner.player:
+		Look.look_at(owner.player.global_position + Vector3(0,1,0))
 		change_pattern(AI_Patter.See_Player)
 	else:
 		change_pattern(AI_Patter.IDLE)
