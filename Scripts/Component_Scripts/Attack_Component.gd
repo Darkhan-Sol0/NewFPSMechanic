@@ -44,26 +44,28 @@ func reload():
 
 func shot():
 	if fired and ammo > 0:
-		print(ammo)
 		ammo -= 1
 		fired = false
 		for i in drop:
 			bullet_func()
-		$"../Head".rotation.x += otdacha
+#		$"../Head".rotation.x += otdacha
 		await get_tree().create_timer(shot_coldown).timeout
 		fired = true
 	elif ammo <= 0:
 		reload()
 
+
 func bullet_func():
 	var bullet_ins = preload("res://Objects/Components/bullet.tscn").instantiate()
 	
-	var rndx = randf_range(-razbros, razbros)
-	var rndy = randf_range(-razbros, razbros)
+#	var rndx = randf_range(-razbros, razbros)
+#	var rndy = randf_range(-razbros, razbros)
+	
+	var theta = randf() * 2 * PI
+	var r = randf_range(0, razbros)
 	
 	bullet_ins.global_transform = startbullet.global_transform
 	bullet_ins.damage = damage
-	bullet_ins.apply_central_impulse(Vector3(0, 0, -large).rotated(Vector3.RIGHT, startbullet.global_rotation.x + rndy).rotated(Vector3.UP, startbullet.global_rotation.y + rndx))
+	bullet_ins.apply_central_impulse(Vector3(r * cos(theta), r * sin(theta), -large).rotated(Vector3(1,0,0), startbullet.global_rotation.x).rotated(Vector3(0,1,0), startbullet.global_rotation.y))
 
 	Global.add_child(bullet_ins)
-	
