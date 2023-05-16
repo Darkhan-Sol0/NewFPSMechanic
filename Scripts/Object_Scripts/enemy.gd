@@ -1,16 +1,24 @@
 extends CharacterBody3D
 
+@export var AI : AI_Enemy
+@export var player : CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export var hp : int = 100 
+
+func take_damage(damage):
+	hp -= damage
+	if hp <= 0:
+		print('die')
+		queue_free()
 
 func _physics_process(delta):
-	# Add the gravity.
+	
+	AI.pattern()
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
 
 	move_and_slide()

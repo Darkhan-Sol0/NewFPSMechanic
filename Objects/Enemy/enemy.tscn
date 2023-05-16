@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://deifickowycnn"]
+
+[ext_resource type="Script" path="res://Scripts/Object_Scripts/enemy.gd" id="1_5dy6u"]
+[ext_resource type="Script" path="res://Scripts/Component_Scripts/AI_Enemy.gd" id="2_10vdf"]
+[ext_resource type="Script" path="res://Scripts/Component_Scripts/Attack_Component.gd" id="3_g7mgk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4krly"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_chfgd"]
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AI")]
+script = ExtResource("1_5dy6u")
+AI = NodePath("AI_Enemy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_4krly")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_chfgd")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="StartBullet" type="Marker3D" parent="Head"]
+
+[node name="look" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -10)
+
+[node name="AI_Enemy" type="Node" parent="."]
+script = ExtResource("2_10vdf")
+
+[node name="Attack_Component" type="Node3D" parent="." node_paths=PackedStringArray("startbullet")]
+script = ExtResource("3_g7mgk")
+startbullet = NodePath("../Head/StartBullet")
+large = 50.0
+razbros = 0.01
+shot_coldown = 1.0

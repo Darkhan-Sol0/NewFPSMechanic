@@ -1,31 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpknvi0q5kab3"]
+[gd_scene load_steps=8 format=3 uid="uid://b4iww5p8robyh"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xs87t"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_be63u"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_16ylv"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_negc1"]
 size = Vector2(20, 20)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wi6gt"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g1gjr"]
 
-[sub_resource type="Sky" id="Sky_6wieu"]
-sky_material = SubResource("ProceduralSkyMaterial_wi6gt")
+[sub_resource type="Sky" id="Sky_mjf6s"]
+sky_material = SubResource("ProceduralSkyMaterial_g1gjr")
 
-[sub_resource type="Environment" id="Environment_a1xae"]
+[sub_resource type="Environment" id="Environment_glhas"]
 background_mode = 2
-sky = SubResource("Sky_6wieu")
+sky = SubResource("Sky_mjf6s")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ltc8l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pld2q"]
 
 [node name="Level0" type="Node3D"]
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("WorldBoundaryShape3D_xs87t")
+shape = SubResource("WorldBoundaryShape3D_be63u")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_16ylv")
+mesh = SubResource("PlaneMesh_negc1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_a1xae")
+environment = SubResource("Environment_glhas")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.519251, 0.854622, 0, -0.854622, 0.519251, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.207007, 0.97834, 0, -0.97834, 0.207007, 0, 0, 0)
+shadow_enabled = true
+
+[node name="wall" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 3.53553, 0, 10, 0, -0.707107, 0, 3.53553, 8, 5, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+shape = SubResource("BoxShape3D_ltc8l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall"]
+mesh = SubResource("BoxMesh_pld2q")
