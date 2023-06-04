@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var attack_component : Attack_Component
 
-@export var speed : int = 5.0
+@export var speed : int = 6.0
 @export var jump : int = 4.5
 
 
