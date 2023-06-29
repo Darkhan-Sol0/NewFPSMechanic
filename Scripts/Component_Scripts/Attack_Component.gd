@@ -8,7 +8,7 @@ var ammo : int
 
 @export var damage : int = 0
 @export var large : float = 100.0
-@export var razbros : float = 0.05
+@export var razbros : float = 1
 @export var drop : int = 1
 
 @export var shot_coldown : float = 0.1
@@ -48,9 +48,10 @@ func shot():
 		fired = false
 		for i in drop:
 			bullet_func()
-#		$"../Head".rotation.x += otdacha
+		$"../Head".rotation.x += otdacha
 		await get_tree().create_timer(shot_coldown).timeout
 		fired = true
+		$"../Head".rotation.x -= otdacha/2
 	elif ammo <= 0:
 		reload()
 

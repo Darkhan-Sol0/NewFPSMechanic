@@ -83,14 +83,13 @@ texture = ExtResource("3_6gq7j")
 expand_mode = 1
 
 [node name="StartBullet" type="Marker3D" parent="Head"]
-transform = Transform3D(0.999848, 0.00060908, 0.0174418, 0, 0.999391, -0.0348995, -0.0174524, 0.0348942, 0.999239, 0.2, -0.2, -1)
+transform = Transform3D(0.999848, 0.00060908, 0.0174418, 0, 0.999391, -0.0348995, -0.0174524, 0.0348942, 0.999239, 0.19, -0.19, -1)
 
 [node name="Attack_Component" type="Node3D" parent="." node_paths=PackedStringArray("startbullet")]
 script = ExtResource("2_24xkf")
 startbullet = NodePath("../Head/StartBullet")
 max_ammo = 100
 damage = 10
-razbros = 10.0
-drop = 100
 shot_coldown = 0.05
-otdacha = 0.01
+type_fire = 1
+otdacha = 0.02
