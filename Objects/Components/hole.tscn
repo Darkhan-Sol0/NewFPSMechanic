@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqx8lt6qxmi0e"]
+
+[ext_resource type="Script" path="res://Objects/Components/hole.gd" id="1_vk7hd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvw7n"]
+albedo_color = Color(0, 0, 0, 1)
+rim_enabled = true
+rim_tint = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_2j6hg"]
+material = SubResource("StandardMaterial3D_bvw7n")
+radius = 0.05
+height = 0.1
+
+[node name="hole" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_2j6hg")
+script = ExtResource("1_vk7hd")

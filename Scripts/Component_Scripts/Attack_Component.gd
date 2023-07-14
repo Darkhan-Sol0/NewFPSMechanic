@@ -59,9 +59,6 @@ func shot():
 func bullet_func():
 	var bullet_ins = preload("res://Objects/Components/bullet.tscn").instantiate()
 	
-#	var rndx = randf_range(-razbros, razbros)
-#	var rndy = randf_range(-razbros, razbros)
-	
 	var theta = randf() * 2 * PI
 	var r = randf_range(0, razbros)
 	
