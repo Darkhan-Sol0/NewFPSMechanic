@@ -15,8 +15,11 @@ background_mode = 2
 sky = SubResource("Sky_mjf6s")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ltc8l"]
+size = Vector3(1, 10, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pld2q"]
+flip_faces = true
+size = Vector3(1, 10, 10)
 
 [node name="Level0" type="Node3D"]
 
@@ -36,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 0.207007, 0.97834, 0, -0.97834, 0.207007, 0,
 shadow_enabled = true
 
 [node name="wall" type="StaticBody3D" parent="."]
-transform = Transform3D(0.707107, 0, 3.53553, 0, 10, 0, -0.707107, 0, 3.53553, 8, 5, -4)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8, 5, -4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
 shape = SubResource("BoxShape3D_ltc8l")

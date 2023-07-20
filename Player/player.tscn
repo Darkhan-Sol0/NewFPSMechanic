@@ -84,7 +84,7 @@ texture = ExtResource("3_6gq7j")
 expand_mode = 1
 
 [node name="StartBullet" type="Marker3D" parent="Head"]
-transform = Transform3D(0.999848, 0.00060908, 0.0174418, 0, 0.999391, -0.0348995, -0.0174524, 0.0348942, 0.999239, 0.19, -0.19, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Attack_Component" type="Node3D" parent="." node_paths=PackedStringArray("startbullet")]
 script = ExtResource("2_24xkf")
